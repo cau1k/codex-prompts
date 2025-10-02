@@ -8,7 +8,7 @@ prompts:
   /spec:tasks {create|review|update} [context]
     ┕ Create, review, or update implementation task list.
   /spec:approve {requirements|design|tasks}
-    ┕Approve a specification phase.
+    ┕ Approve a specification phase.
   /spec:implement [phase-number|task]
     ┕ Start implementation from approved tasks.
   /spec:implement-next [task] (optional)
