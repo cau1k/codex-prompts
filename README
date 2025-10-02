@@ -1,0 +1,29 @@
+prompts:
+  /spec:new [feature-name (kebab-case)]
+    ┕ Create a new feature specification.
+  /spec:requirements {create|review|update} [context]
+    ┕ Create, review, or update requirements specification.
+  /spec:design {create|review|update} [context]
+    ┕ Create, review, or update technical design specification.
+  /spec:tasks {create|review|update} [context]
+    ┕ Create, review, or update implementation task list.
+  /spec:approve {requirements|design|tasks}
+    ┕Approve a specification phase.
+  /spec:implement [phase-number|task]
+    ┕ Start implementation from approved tasks.
+  /spec:implement-next [task] (optional)
+    ┕ Start implementation of the next single task bullet point in the active spec phase.
+  /spec:implement-cleanup [context]
+    ┕ Run cleanup, linting, and build validation for the active spec implementation.
+  /spec:update-task [task-filter]
+    ┕ Mark a task as complete.
+  /spec:handoff
+    ┕ Handoff a specification to the next agent by generating a robust prompt.
+  /spec:status [spec-id-or-name]
+    ┕ Show all specifications and their status.
+  /spec:switch <spec-id-or-name>
+    ┕ Switch to a different specification.
+  /nia:index [resource-urls]
+    ┕ Format a table of provided links, add new URLs, index them, and update the indexing jobs record.
+  /summarize
+    ┕ Summarise the current chat.
