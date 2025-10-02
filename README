@@ -26,4 +26,4 @@ prompts:
   /nia:index [resource-urls]
     ┕ Format a table of provided links, add new URLs, index them, and update the indexing jobs record.
   /summarize
-    ┕ Summarise the current chat.
+    ┕ Summarize the current chat.
