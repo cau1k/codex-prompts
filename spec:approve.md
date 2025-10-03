@@ -5,6 +5,8 @@ argument-hint: requirements|design|tasks
 arguments: $ARGUMENTS
 ---
 
+**USER PASSED COMMAND: `/spec:approve $ARGUMENTS`**
+
 ## Context
 
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
