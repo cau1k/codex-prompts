@@ -36,10 +36,10 @@ Design approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.design-ap
    - Apply the context to refine phases, tasks, or source references (e.g., new milestones, scope changes).
    - Update relevant sections without losing historical clarity, and summarize the changes introduced.
    - Inspect `.llms/spec/$(cat .llms/spec/.current-spec)/` for files named `implement-*.md`; if any exist, append a concise summary of the task list revisions to the most recent log. If none exist, instruct the user to create `implement-$(date +%m-%d-%y).md` and record the updates there.
-7. if ($ARGUMENTS === "docs")
-
-- For the current tasks.md, check to see if it has any existing [Docs] tags
-  - if the bullet point under the task does have "[Docs]" tag(s), you must extend it by finding source URLs by broadly querying nia with a question like "find examples of code or functions that could accomplish <task requirement>". Record all the source URLs that nia returns per [Docs] tag with the title of the source.
-    - For example, it would look like "- [ ] Add API key authorization" you would append child bullet(s) to the "- [Docs] better-auth (<source-id>)", with matching source URLs like "[Source]: <https://better-auth.com/docs/plugin/api-keys>"
+7. if ($ARGUMENTS === "docs"):
+   - Confirm `tasks.md` exists; if not, stop and direct the user to create it first.
+   - Locate any `[Docs]` tags under the checklist items. For each tag, run a broad Nia query such as `find related sources in the docs for code or related references that could accomplish <task requirement>` and gather every source URL returned.
+   - Add child bullets beneath the tag in the format `[Source] Title (<url>)` so each reference is captured alongside the task.
+   - If no `[Docs]` tags are present, you should run the nia `list_documentation` tool to add related docs that match existing implementations or are related to the user's previous context from the design or requirements documents.
 
 8. In all modes, encourage the user to run `/spec:approve tasks` once the document reflects the agreed plan.
