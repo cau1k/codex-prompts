@@ -45,10 +45,12 @@ fi`
 
 ### Phase 1: Prime Context
 
-1. Read and query the docs noted in the current spec's `tasks.md`. Ask more broad queries per source (if passed, for "$ARGUMENTS") with Nia MCP. Pertinent docs are identified by `[Docs]` in the spec's task.md file.
-2. For each source, run at least one example-driven query (e.g., "show code implementing <requirement>") to surface concrete patterns or snippets. Log a one-sentence takeaway per query before moving on.
-3. Provide a brief summary of how the collected docs and examples will guide your implementation.
-4. Create a plan using your native plan tool with a minimum of 4 concise but detailed technical plan steps/bullets that lay out your implementation plan, not other steps like checking docs or other things. These should be purely technical to keep you focused on implementation.
+1. Confirm the active task's checklist includes `[Docs]` tags. If none are present, run the Nia `list_documentation` tool to surface sources tied to prior design/requirements context or neighboring implementations, and add the relevant tags before moving forward.
+2. For each `[Docs]` tag, issue a broad Nia query such as `find related sources in the docs for code or related references that could accomplish <task requirement>` and capture every URL returned as `[Source] Title (<url>)` child bullets beneath the tag so the task has traceable references.
+3. Read and query the docs noted in the current spec's `tasks.md`, keeping the focus on the active task. Ask additional broad queries per source (and for `$ARGUMENTS` when provided) to confirm coverage. Pertinent docs are identified by `[Docs]` in the spec's tasks.
+4. For each source, run at least one example-driven query (e.g., "show code implementing <requirement>") to surface concrete patterns or snippets. Log a one-sentence takeaway per query before moving on.
+5. Provide a brief summary of how the collected docs and examples will guide your implementation.
+6. Create a plan using your native plan tool with a minimum of 4 concise but detailed technical plan steps/bullets that lay out your implementation plan, not other steps like checking docs or other things. These should be purely technical to keep you focused on implementation.
 
 ### Phase 2: Implement Single Task in Current Phase
 

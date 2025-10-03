@@ -36,7 +36,7 @@ fi`
    - If no argument is provided, select the first phase that still has unchecked tasks.
    - If the requested phase cannot be found or has no remaining work, explain the issue and stop.
 3. Within the chosen phase, identify the first unchecked task (`- [ ]`) and treat it as the active work item.
-4. Read every specification document plus any files referenced by the active task. Follow the fact-checking standard by querying the cited sources with Nia MCP before coding.
+4. Read every specification document plus any files referenced by the active task. For each `[Docs]` tag attached to the checklist item, run a broad Nia query such as `find related sources in the docs for code or related references that could accomplish <task requirement>` and collect every URL returned. Capture those references as child bullets in the form `[Source] Title (<url>)` so the task stays traceable. If no `[Docs]` tags exist, start by running the Nia `list_documentation` tool to surface sources that match either prior implementation work or the design/requirements context. Always follow the fact-checking standard by querying the cited sources before coding.
 5. Display the list of incomplete tasks, highlighting the active item and summarizing its dependencies or related docs.
 6. Create or append to the current implementation session log with:
    - Phase number and task summary
