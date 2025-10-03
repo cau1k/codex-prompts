@@ -12,6 +12,10 @@ arguments: $ARGUMENTS
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Spec directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/null`
 
+<|start_user_provided_command|>
+`/spec:approve $ARGUMENTS`
+<|end_user_provided_command|>
+
 ## Your Task
 
 1. Determine the target phase:

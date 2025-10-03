@@ -9,6 +9,12 @@ arguments: $ARGUMENTS
 
 !`ls -la .llms/spec/ 2>/dev/null | grep "^d" | wc -l | xargs -I {} echo "Total specs: {}"`
 
+## Context
+
+<|start_user_provided_task|>
+`/spec:new $ARGUMENTS` (ommit the number if provided in a kebab-case, e.g., 003-new-spec should be created as 003-new-spec, not 003-003-new-spec)
+<|end_user_provided_task|>
+
 ## Your Task
 
 Create a new specification directory for the feature: $ARGUMENTS

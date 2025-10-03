@@ -12,6 +12,10 @@ arguments: $ARGUMENTS
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null || echo "No active spec"`
 Spec directory contents: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec 2>/dev/null)/ 2>/dev/null || echo "Spec not found"`
 
+<|start_user_provided_task|>
+`/spec:requirements $ARGUMENTS`
+<|end_user_provided_task|>
+
 ## Your Task
 
 1. Ensure arguments are provided. If none are supplied, halt and ask the user to rerun with `create`, `review`, or `update` followed by optional context.

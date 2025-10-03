@@ -1,16 +1,18 @@
 ---
 suggested_tools: Bash(cat:*), Bash(test:*), Nia MCP (for reading the documentation sources in the task list!)
 description: Create, review, or update implementation task list
-argument-hint: {create|review|update|docs}
+argument-hint: create|review|update|docs
 arguments: $ARGUMENTS
 ---
-
-**USER PROVIDED COMMAND: `/spec:design $ARGUMENTS`**
 
 ## Context
 
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Design approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.design-approved && echo "Yes" || echo "No"`
+
+<|start_user_provided_command|>
+`/spec:tasks $ARGUMENTS`
+<|end_user_provided_command|>
 
 ## Your Task
 

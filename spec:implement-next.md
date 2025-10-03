@@ -1,7 +1,8 @@
 ---
 description: Start implementation of the next single task bullet point in the active spec phase.
 suggested_tools: Nia MCP (for the documentation IDs provided in the tasks!)
-arguments: specific task (optional)
+argument-hint: task (optional)
+arguments: $ARGUMENTS
 ---
 
 ## Context
@@ -16,6 +17,10 @@ for file in .llms/spec/$(cat .llms/spec/.current-spec)/*; do
     echo "--- Content: $(cat $file) ---"
 done
 ```
+
+<|start_user_provided_task|>
+"$ARGUMENTS"
+<|end_user_provided_task|>
 
 ## Current Tasks
 

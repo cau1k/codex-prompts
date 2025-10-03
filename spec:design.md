@@ -1,7 +1,7 @@
 ---
 allowed-tools: Bash(cat:*), Bash(test:*), Bash(ls:*), Write, Nia MCP (all tools approved)
-description: Create, review, or update technical design specification
-argument-hint: {create|review|update}
+description: Technical design specification
+argument-hint: create|review|update
 arguments: $ARGUMENTS
 ---
 
@@ -12,6 +12,10 @@ arguments: $ARGUMENTS
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Requirements approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.requirements-approved && echo "Yes" || echo "No"`
 Current directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/null`
+
+<|start_user_provided_command|>
+`/spec:design $ARGUMENTS`
+<|end_user_provided_command|>
 
 ## Your Task
 

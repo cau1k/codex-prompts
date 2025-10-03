@@ -1,13 +1,19 @@
 ---
 allowed-tools: Bash(cat:*), Bash(grep:*), python, ruby
 description: Mark a task as complete
-argument-hint: [task-filter]
+argument-hint: <task-filter>
 arguments: $ARGUMENTS
 ---
 
 ## Current Tasks
 
 !`cat .llms/spec/$(cat .llms/spec/.current-spec)/tasks.md | grep -n "^- \[" | head -20`
+
+## Context
+
+<|start_user_provided_command|>
+`/spec:update-task $ARGUMENTS`
+<|end_user_provided_command|>
 
 ## Your Task
 

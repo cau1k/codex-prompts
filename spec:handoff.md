@@ -1,6 +1,6 @@
 ---
 allowed-tools: Bash(ls:*), Bash(cat:*), Bash(grep:*), Bash(test:*), Bash(find:*)
-description: Handoff a specification to the next agent by generating a robust prompt.
+description: Handoff implementation work to another agent.
 ---
 
 ## Context

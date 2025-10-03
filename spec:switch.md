@@ -9,6 +9,12 @@ arguments: $ARGUMENTS
 
 !`ls -d .llms/spec/*/ 2>/dev/null | sort`
 
+## Context
+
+<|start_user_provided_command|>
+`/spec:switch $ARGUMENTS`
+<|end_user_provided_command|>
+
 ## Your Task
 
 1. If no argument is provided, list all available specs and exit without making changes.

@@ -1,7 +1,7 @@
 ---
 allowed-tools: Bash(ls:*), Bash(cat:*), Bash(grep:*), Bash(test:*), Bash(find:*)
 description: Show all specifications and their status
-argument-hint: [spec-id-or-name]
+argument-hint: <fuzzy-spec-id-or-name>
 arguments: $ARGUMENTS
 ---
 
@@ -29,6 +29,12 @@ for dir in .llms/spec/*/; do
         fi
     fi
 done`
+
+## Context
+
+<|start_user_provided_command|>
+`/spec:status $ARGUMENTS`
+<|end_user_provided_command|>
 
 ## Your Task
 

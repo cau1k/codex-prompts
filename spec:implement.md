@@ -1,7 +1,7 @@
 ---
 description: Start implementation from approved tasks
 suggested_tools: Nia MCP (for the documentation IDs provided in the tasks!)
-argument-hint: [phase-number OR specific task]
+argument-hint: task (optional)
 arguments: $ARGUMENTS
 ---
 
@@ -17,6 +17,10 @@ for file in .llms/spec/$(cat .llms/spec/.current-spec)/*; do
     echo "--- Content: $(cat $file) ---"
 done
 ```
+
+<|start_user_provided_task|>
+"$ARGUMENTS"
+<|end_user_provided_task|>
 
 ## Current Tasks
 

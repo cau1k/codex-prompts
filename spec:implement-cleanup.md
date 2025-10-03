@@ -1,7 +1,7 @@
 ---
 description: Run cleanup, linting, and build validation for the active spec implementation
 suggested_tools: Nia MCP (for troubleshooting docs and build guidance)
-argument-hint: [context]
+argument-hint: User-provided context
 arguments: $ARGUMENTS
 ---
 
@@ -10,12 +10,16 @@ arguments: $ARGUMENTS
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Repo status: !`git status --short`
 
+<|start_user_provided_task|>
+"$ARGUMENTS"
+<|end_user_provided_task|>
+
 ## Your Task
 
 When this prompt is invoked, treat it as a recovery / stabilization protocol. Follow these steps sequentially:
 
 1. **Clarify Context**
-   - Summarize the current implementation goal and the error state you are trying to resolve. Use `$ARGUMENTS` as extra context if provided.
+   - Summarize the current implementation goal and the error state you are trying to resolve.
    - Identify the files touched in this session (`git status`) and note which ones likely affect the failure.
 
 2. **Environment Sanity Checks**
