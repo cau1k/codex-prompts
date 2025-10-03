@@ -16,10 +16,10 @@ Spec directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/null
    - If `$ARGUMENTS` is empty, select the first phase without an approval marker in this order: requirements → design → tasks. If all are approved, report that no action is needed.
    - If `$ARGUMENTS` is provided, use it verbatim after validating it matches one of `requirements`, `design`, or `tasks`.
 2. Verify the corresponding phase file exists (requirements.md, design.md, or tasks.md). If missing, halt and report the issue.
-3. Create the approval marker: `.<phase>-approved` using the touch command.
+3. Create the approval marker: `.$ARGUMENTS-approved` using the touch command.
 4. Inform the user about next steps and recommend invoking the next spec prompt immediately:
-   - After requirements → run `/spec:design` to continue the workflow
-   - After design → run `/spec:tasks` to define the implementation plan
+   - After requirements → run `/spec:design create` to continue the workflow
+   - After design → run `/spec:tasks create` to define the implementation plan
    - After tasks → begin implementation work (e.g., `/spec:implement-next`)
 5. If an invalid phase name is provided, list valid options and do not create a marker.
 

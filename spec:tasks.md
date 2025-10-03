@@ -1,9 +1,11 @@
 ---
 suggested_tools: Bash(cat:*), Bash(test:*), Nia MCP (for reading the documentation sources in the task list!)
 description: Create, review, or update implementation task list
-argument-hint: create|review|update [context]
+argument-hint: {create|review|update}
 arguments: $ARGUMENTS
 ---
+
+**USER PROVIDED COMMAND: `/spec:design $ARGUMENTS`**
 
 ## Context
 
@@ -15,7 +17,7 @@ Design approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.design-ap
 1. Ensure arguments are provided. If none are supplied, halt and ask the user to rerun with `create`, `review`, or `update` followed by optional context.
 2. Interpret the first argument as the mode (`create`, `review`, or `update`). Reject any other value and instruct the user to choose one of the three valid options. Treat remaining arguments as context notes relevant to the session.
 3. Verify design is approved before proceeding. If `.design-approved` is missing, inform the user to complete that phase first.
-4. For `create` mode:
+4. if ($ARGUMENTS === "create"):
    - Draft `tasks.md` with:
      - Overview including time/effort estimates
      - Phase breakdown (Foundation, Core, Testing, Deployment)
@@ -24,12 +26,12 @@ Design approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.design-ap
      - Task dependencies
      - Risk mitigation tasks
    - Keep tasks specific, actionable, and sequenced to support incremental work and testing.
-5. For `review` mode:
+5. if ($ARGUMENTS === "review"):
    - Confirm `tasks.md` exists; if not, report that creation is required first.
    - Evaluate coverage, sequencing, and risk handling; highlight gaps or unclear ownership.
    - Check that each task references appropriate research sources and that dependencies are explicit.
    - Produce a checklist and recommend concrete adjustments before approval.
-6. For `update` mode:
+6. if ($ARGUMENTS === "update"):
    - Ensure `tasks.md` exists; otherwise direct the user to create it first.
    - Apply the context to refine phases, tasks, or source references (e.g., new milestones, scope changes).
    - Update relevant sections without losing historical clarity, and summarize the changes introduced.

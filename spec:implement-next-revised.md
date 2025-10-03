@@ -45,11 +45,12 @@ fi`
 
 ### Phase 1: Prime Context
 
-1. Read and query the docs noted in the current spec's `tasks.md`, staying focused on the sections relevant to the active task. Ask one broad query per source (if passed, for "$ARGUMENTS") with Nia MCP to map the terrain before drilling down. Pertinent docs are identified by `[Docs]` in the spec's task.md file.
-2. For each source, run at least one example-driven query (e.g., "show code implementing <requirement>") to surface concrete patterns or snippets. Capture a one-sentence takeaway per query and prefer summarizing over copying long excerpts; only quote the exact lines you expect to reuse immediately.
-3. Maintain a running hit list of the docs touched: note source ID, query, essential snippet references, and open questions. If a doc turns out to be irrelevant, record that so you do not revisit it in the same session.
-4. Present a concise `Research Summary` to the user that bundles the takeaways, cites which docs were touched, calls out any remaining gaps, and explicitly states that you have paused to avoid blowing out context.
-5. Stop here and wait for user direction. Do not start planning or implementation until the user either greenlights the next phase or requests more research.
+1. Start by issuing this required Nia query: `find the most pages in this documentation to complete this task: $ARGUMENTS`. If no arguments were provided, replace `$ARGUMENTS` with a concise description of the active task. Use the response to shortlist the documentation IDs worth inspecting.
+2. Read and query only the shortlisted docs that appear in the current spec's `tasks.md`, staying focused on the sections relevant to the active task. Ask one broad, doc-level query per source to confirm relevance before drilling down. Pertinent docs are identified by `[Docs]` in the spec's task.md file.
+3. For each source that proves relevant, run at least one example-driven query (e.g., "show code implementing <requirement>") to surface concrete patterns or snippets. Capture a one-sentence takeaway per query and prefer summarizing over copying long excerpts; only quote the exact lines you expect to reuse immediately.
+4. Maintain a running hit list of the docs touched: note source ID, query, essential snippet references, and open questions. If a doc turns out to be irrelevant, record that so you do not revisit it in the same session.
+5. Present a concise `Research Summary` to the user that bundles the takeaways, cites which docs were touched, calls out any remaining gaps, and explicitly states that you have paused to avoid blowing out context.
+6. Stop here and wait for user direction. Do not start planning or implementation until the user either greenlights the next phase or requests more research.
 
 ### Phase 2: Planning (Begin Only After User Approval)
 
