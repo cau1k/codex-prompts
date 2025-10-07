@@ -51,6 +51,10 @@ When this prompt is invoked, treat it as a recovery / stabilization protocol. Fo
    - Append a cleanup entry to `.llms/spec/<current-spec>/implement-<date>.md` detailing the recovery steps, commands executed, and resolutions achieved.
    - Highlight any TODOs or follow-up tasks discovered during cleanup.
 
+8. **Git commit**
+   - Please conventionally commit all the changes, including the work done prior. Do not commit any changes made during this "cleanup" phase after linting and formatting.
+   - If it is a large commit, you should document any design decisions or quirks in the body of the the commit.
+
 8. **Next Actions for User**
    - Recommend the next prompt or command the user should run (e.g., `/spec:implement-next` to resume feature work).
    - If unresolved errors remain, provide concise reproduction steps and suggested investigation paths.
