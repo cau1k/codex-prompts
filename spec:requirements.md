@@ -42,5 +42,6 @@ Spec directory contents: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec 2>/d
    - Edit the document to incorporate the updates while keeping template sections intact and consistent.
    - Summarize the changes made and note any follow-up actions required before approval.
 6. In all modes, remind the user to run `/spec:approve requirements` once the document is ready for sign-off.
+7. After creating the document you should return a concise, bulleted summary to the user, omitting all bloat.
 
 Use the Write tool to create or revise `requirements.md` as needed.

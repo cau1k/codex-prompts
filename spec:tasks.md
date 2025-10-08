@@ -45,3 +45,4 @@ Design approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.design-ap
    - If no `[Docs]` tags are present, you should run the nia `list_documentation` tool to add related docs that match existing implementations or are related to the user's previous context from the design or requirements documents.
 
 8. In all modes, encourage the user to run `/spec:approve tasks` once the document reflects the agreed plan.
+9. After creating the document you should return a concise, bulleted summary to the user, omitting all bloat.

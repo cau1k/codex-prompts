@@ -44,5 +44,6 @@ Current directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/n
    - Update relevant sections while keeping the document cohesive and noting any new risks or dependencies.
    - Summarize modifications and flag follow-up work if needed.
 7. In all modes, cite documentation via Nia MCP when making or validating decisions, and encourage the user to run `/spec:approve design` once ready for sign-off.
+8. After creating the document you should return a concise, bulleted summary to the user, omitting all bloat.
 
 Use the Write tool to create or revise the design document.
