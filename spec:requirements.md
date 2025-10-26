@@ -24,7 +24,10 @@ Spec directory contents: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec 2>/d
 ## Your Task
 
 1. Ensure arguments are provided. If none are supplied, halt and ask the user to rerun with `create`, `review`, or `update` followed by optional context.
-  - The user provided "$2" as additional context. Please adhere to their instructions, guidance, or terms.
+  - The user provided the following as additional context. Please adhere to their instructions, guidance, or terms.
+  <|start_user_provided_context|>
+  $2
+  <|end_user_provided_context|>
 2. Interpret the first argument as the mode (`create`, `review`, or `update`). Reject any other value and instruct the user to choose one of the three valid options. Treat remaining arguments as context notes relevant to the session.
 3. if ($ARGUMENTS === "create"):
    - Confirm `requirements.md` exists or create it.
