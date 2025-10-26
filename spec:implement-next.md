@@ -1,11 +1,20 @@
 ---
 description: Start implementation of the next single task bullet point in the active spec phase.
 suggested_tools: Nia MCP (for the documentation IDs provided in the tasks!)
-argument-hint: task (optional)
-arguments: $ARGUMENTS
+argument-hint: task (optional), context (optional)
+arguments: $ARGUMENTS | $1 = TASK | $2 = CONTEXT
 ---
 
 ## Context
+
+<|start_user_provided_command|>
+`/spec:implement-next $ARGUMENTS`
+<|end_user_provided_command|>
+
+<|start_user_provided_arguments|>
+$$1 = TASK = "$1"
+$$2 = CONTEXT = "$2"
+<|end_user_provided_arguments|>
 
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Tasks approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.tasks-approved && echo "Yes" || echo "No"`
@@ -17,10 +26,6 @@ for file in .llms/spec/$(cat .llms/spec/.current-spec)/*; do
     echo "--- Content: $(cat $file) ---"
 done
 ```
-
-<|start_user_provided_task|>
-"$ARGUMENTS"
-<|end_user_provided_task|>
 
 ## Current Tasks
 
@@ -41,6 +46,7 @@ fi`
 2.5. If a user provided an argument for a task, please implement that argument and nothing else:
 
 - "$ARGUMENTS"
+- The user provided "$2" as additional context. Please adhere to their instructions, guidance, or terms.
 
 3. If a phase is in progress, focus on the first incomplete bullet point in that phase.
 

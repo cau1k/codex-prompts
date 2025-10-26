@@ -2,27 +2,31 @@
 allowed-tools: Bash(cat:*), Bash(test:*), Bash(ls:*), Write, Nia MCP (all tools approved)
 description: Technical design specification
 argument-hint: create|review|update
-arguments: $ARGUMENTS
+arguments: $ARGUMENTS | $1 = MODE OPTION | $2 = CONTEXT
 ---
 
-**USER PROVIDED COMMAND: `/spec:design $ARGUMENTS`**
-
 ## Context
-
-Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
-Requirements approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.requirements-approved && echo "Yes" || echo "No"`
-Current directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/null`
 
 <|start_user_provided_command|>
 `/spec:design $ARGUMENTS`
 <|end_user_provided_command|>
 
+<|start_user_provided_arguments|>
+$$1 = MODE = "$1"
+$$2 = CONTEXT = "$2"
+<|end_user_provided_arguments|>
+
+Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
+Requirements approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.requirements-approved && echo "Yes" || echo "No"`
+Current directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/null`
+
 ## Your Task
 
 1. Ensure arguments are provided. If none are supplied, halt and ask the user to rerun with `create`, `review`, or `update` followed by optional context.
+  - The user provided "$2" as additional context. Please adhere to their instructions, guidance, or terms.
 2. Interpret the first argument as the mode (`create`, `review`, or `update`). Reject any other value and instruct the user to choose one of the three valid options. Treat remaining arguments as context notes relevant to the session.
 3. Verify requirements are approved (look for `.requirements-approved`). If not approved, notify the user to complete and approve requirements before proceeding.
-4. if ($ARGUMENTS === "create"):
+4. if ("$1" === "create"):
    - Assemble background research with Nia MCP as needed, following the Tool Chaining Protocol when complexity warrants.
    - Produce `design.md` using `~/.codex/templates/design.md`, covering:
      - Architecture overview (diagrams encouraged)
@@ -33,12 +37,12 @@ Current directory: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec)/ 2>/dev/n
      - Performance considerations
      - Deployment architecture
      - Technical risks and mitigations
-5. if ($ARGUMENTS === "review"):
+5. if ("$1" === "review"):
    - Confirm `design.md` exists; if absent, report that creation must happen first.
    - Read and critique each section, highlighting misalignments with requirements or missing research.
    - Produce a checklist against the template above and call out high-risk areas or open questions.
    - Recommend concrete updates required before approval.
-6. if ($ARGUMENTS === "update"):
+6. if ($1 === "update"):
    - Ensure `design.md` exists; otherwise instruct the user to create it first.
    - Apply the provided context to focus revisions (e.g., new constraints, tech changes).
    - Update relevant sections while keeping the document cohesive and noting any new risks or dependencies.

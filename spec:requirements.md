@@ -1,24 +1,30 @@
 ---
 allowed-tools: Bash(cat:*), Bash(test:*), Bash(touch:*), Write
 description: Create, review, or update requirements specification
-argument-hint: create|review|update
-arguments: $ARGUMENTS
+argument-hint: $1 (mode) = create|review|update, $2 (context)
+arguments: $ARGUMENTS | $1 = MODE | $2 = CONTEXT
 ---
 
 **USER PROVIDED COMMAND: `/spec:requirements $ARGUMENTS`**
 
 ## Context
 
+<|start_user_provided_command|>
+`/spec:requirements $ARGUMENTS`
+<|end_user_provided_command|>
+
+<|start_user_provided_arguments|>
+$$1 = MODE = "$1"
+$$2 = CONTEXT = "$2"
+<|end_user_provided_arguments|>
+
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null || echo "No active spec"`
 Spec directory contents: !`ls -la .llms/spec/$(cat .llms/spec/.current-spec 2>/dev/null)/ 2>/dev/null || echo "Spec not found"`
-
-<|start_user_provided_task|>
-`/spec:requirements $ARGUMENTS`
-<|end_user_provided_task|>
 
 ## Your Task
 
 1. Ensure arguments are provided. If none are supplied, halt and ask the user to rerun with `create`, `review`, or `update` followed by optional context.
+  - The user provided "$2" as additional context. Please adhere to their instructions, guidance, or terms.
 2. Interpret the first argument as the mode (`create`, `review`, or `update`). Reject any other value and instruct the user to choose one of the three valid options. Treat remaining arguments as context notes relevant to the session.
 3. if ($ARGUMENTS === "create"):
    - Confirm `requirements.md` exists or create it.

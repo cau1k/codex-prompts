@@ -1,11 +1,20 @@
 ---
 description: Start implementation from approved tasks
 suggested_tools: Nia MCP (for the documentation IDs provided in the tasks!)
-argument-hint: task (optional)
-arguments: $ARGUMENTS
+argument-hint: $1 = task (optional), $2 = context (optional)
+arguments: $ARGUMENTS | $1 (task) | $2 (context)
 ---
 
 ## Context
+
+<|start_user_provided_command|>
+`/spec:implement $ARGUMENTS`
+<|end_user_provided_command|>
+
+<|start_user_provided_arguments|>
+$$1 = TASK = "$1"
+$$2 = CONTEXT = "$2"
+<|end_user_provided_arguments|>
 
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Tasks approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.tasks-approved && echo "Yes" || echo "No"`
@@ -17,10 +26,6 @@ for file in .llms/spec/$(cat .llms/spec/.current-spec)/*; do
     echo "--- Content: $(cat $file) ---"
 done
 ```
-
-<|start_user_provided_task|>
-"$ARGUMENTS"
-<|end_user_provided_task|>
 
 ## Current Tasks
 
@@ -39,6 +44,7 @@ fi`
    - When `$ARGUMENTS` contains a number, map it to the corresponding `## Phase <number>` heading in `tasks.md`.
    - If no argument is provided, select the first phase that still has unchecked tasks.
    - If the requested phase cannot be found or has no remaining work, explain the issue and stop.
+   - The user provided "$2" as additional context. Please adhere to their instructions, guidance, or terms.
 3. Within the chosen phase, identify the first unchecked task (`- [ ]`) and treat it as the active work item.
 4. Read every specification document plus any files referenced by the active task. For each `[Docs]` tag attached to the checklist item, run a broad Nia query such as `find related sources in the docs for code or related references that could accomplish <task requirement>` and collect every URL returned. Capture those references as child bullets in the form `[Source] Title (<url>)` so the task stays traceable. If no `[Docs]` tags exist, start by running the Nia `list_documentation` tool to surface sources that match either prior implementation work or the design/requirements context. Always follow the fact-checking standard by querying the cited sources before coding.
 5. Display the list of incomplete tasks, highlighting the active item and summarizing its dependencies or related docs.

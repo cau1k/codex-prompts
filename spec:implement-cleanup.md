@@ -7,6 +7,14 @@ arguments: $ARGUMENTS
 
 ## Context
 
+<|start_user_provided_command|>
+`/spec:implement-cleanup $ARGUMENTS`
+<|end_user_provided_command|>
+
+<|start_user_provided_arguments|>
+$$1 = CONTEXT = "$1"
+<|end_user_provided_arguments|>
+
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Repo status: !`git status --short`
 
