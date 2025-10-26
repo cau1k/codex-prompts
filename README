@@ -5,6 +5,37 @@
 This directory contains specialized prompts for structured software development
 workflows. Commands are organized by category for clarity.
 
+Requirements:
+  [Nia MCP] <trynia.ai>
+    - If not, grep "nia" and remove all references, or replace with Context7
+
+================================================================================
+                             WORKFLOW DIRECTIONS
+================================================================================
+
+--------------------------------------------------------------------------------
+                             GREENFIELD EXAMPLE
+--------------------------------------------------------------------------------
+
+I want to add a new feature that allows users to authenticate via Google OAuth.
+1. /spec:new "add-google-auth"
+2. /spec:requirements "create" "Add google oauth for all users, handle DB migrations, etc."
+   Looks good? --> /spec:approve requirements
+   Need adjustments? --> /spec:requirements "update" "ensure fallback for email/pass"
+3. /spec:design "create" "[CONTEXT]"  # Background research --> design doc
+   Looks good --> /spec:approve "design"
+   ...
+4. /spec:tasks "create" "[CONTEXT]"   # Using design doc + more docs --> tasks doc
+   Looks Good? --> /spec:approve "tasks" ...
+   Need docs? --> /spec:tasks "docs" "Investigate the docs for google oauth with XYZ MCP"
+5. /spec:implement-next  (strict adherence to docs)
+   -OR-
+   /spec:implement       (for more creative implementation)
+
+================================================================================
+                                    COMMANDS
+================================================================================
+
 --------------------------------------------------------------------------------
 SPECIFICATION WORKFLOW
 --------------------------------------------------------------------------------
@@ -12,26 +43,26 @@ SPECIFICATION WORKFLOW
   /spec:new <feature-name>
     Create a new feature specification with auto-incremented ID.
     Example: /spec:new user-authentication
-    
+
   /spec:requirements {create|review|update} [context]
     Manage requirements specification documents.
     - create:  Generate initial requirements from template
     - review:  Evaluate completeness and identify gaps
     - update:  Apply contextual changes to existing requirements
-    
+
   /spec:design {create|review|update} [context]
     Manage technical design specifications.
     - create:  Produce architecture and implementation design
     - review:  Assess design decisions and alignment with requirements
     - update:  Revise design based on new constraints or feedback
-    
+
   /spec:tasks {create|review|update|docs} [context]
     Manage implementation task lists with phase breakdown.
     - create:  Generate phased task list with estimates and dependencies
     - review:  Validate task coverage, sequencing, and risk handling
     - update:  Modify tasks and update implementation logs
     - docs:    Query and attach documentation sources to task items
-    
+
   /spec:approve {requirements|design|tasks}
     Create approval marker for completed specification phase.
     Automatically suggests next phase in workflow.
@@ -45,14 +76,14 @@ IMPLEMENTATION WORKFLOW
     - Resolves working phase and identifies first unchecked task
     - Primes context with related docs and research
     - Creates implementation session log
-    
+
   /spec:implement-next [task]
     Implement next single task in current phase.
     - Verifies all approvals and reads spec documents
     - Primes context with documentation queries
     - Implements focused, single-task work
     - Generates conventional commit message
-    
+
   /spec:implement-next-seq [task]
     Sequential implementation with enhanced research phase.
     - Phase 1: Prime context with doc queries and examples
@@ -60,7 +91,7 @@ IMPLEMENTATION WORKFLOW
     - Phase 3: Execute implementation
     - Phase 4: Update logs and provide commit message
     Note: Pauses after research phase for user approval
-    
+
   /spec:implement-cleanup [context]
     Run cleanup, linting, and build validation.
     - Executes environment sanity checks
@@ -75,11 +106,11 @@ TASK MANAGEMENT
   /spec:update-task <task-filter>
     Mark tasks as complete based on recent commits.
     Uses git history to identify completed work and updates task checkboxes.
-    
+
   /spec:status [spec-id-or-name]
     Display all specifications and their completion status.
     Shows phase approvals, task progress, and recommended next actions.
-    
+
   /spec:switch <spec-id-or-name>
     Switch active specification context.
     Resolves spec by ID or fuzzy name match.
