@@ -35,7 +35,7 @@ An example looks like:
 5. /spec:tasks "create" "[CONTEXT]"   # Using design doc + more docs --> tasks doc
    Looks Good? --> /spec:approve "tasks" ...
    Need docs? --> /spec:tasks "docs" "Investigate the docs for google oauth with XYZ MCP"
-6. /spec:implement-next  (strict adherence to docs)
+6. /spec:implement-next  (strict adherence to docs & single phase implementation)
    -OR-
    /spec:implement       (for more creative implementation)
 7. Context window is slimming down, run /spec:handoff ...
