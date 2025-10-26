@@ -17,7 +17,13 @@ Requirements:
                              GREENFIELD EXAMPLE
 --------------------------------------------------------------------------------
 
-I want to add a new feature that allows users to authenticate via Google OAuth.
+Let's say you want to add a new feature that allows users to authenticate via
+Google OAuth. The workflow is as follows:
+
+   requirements --> design --> tasks --> implementation --> cleanup
+
+An example looks like:
+
 1. /spec:new "add-google-auth"
 2. /spec:requirements "create" "Add google oauth for all users, handle DB migrations, etc."
    Looks good? --> /spec:approve requirements
@@ -25,12 +31,16 @@ I want to add a new feature that allows users to authenticate via Google OAuth.
 3. /spec:design "create" "[CONTEXT]"  # Background research --> design doc
    Looks good --> /spec:approve "design"
    ...
-4. /spec:tasks "create" "[CONTEXT]"   # Using design doc + more docs --> tasks doc
+4. Context window is slimming down, run /spec:handoff then start a new agent thread with the handoff prompt.
+5. /spec:tasks "create" "[CONTEXT]"   # Using design doc + more docs --> tasks doc
    Looks Good? --> /spec:approve "tasks" ...
    Need docs? --> /spec:tasks "docs" "Investigate the docs for google oauth with XYZ MCP"
-5. /spec:implement-next  (strict adherence to docs)
+6. /spec:implement-next  (strict adherence to docs)
    -OR-
    /spec:implement       (for more creative implementation)
+7. Context window is slimming down, run /spec:handoff ...
+8. /spec:implement-next
+9. In a new agent thread, run /spec:cleanup  # Verifies everything, builds, tests, etc.
 
 ================================================================================
                                     COMMANDS
