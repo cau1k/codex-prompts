@@ -13,9 +13,9 @@ Requirements:
                              WORKFLOW DIRECTIONS
 ================================================================================
 
---------------------------------------------------------------------------------
-                             GREENFIELD EXAMPLE
---------------------------------------------------------------------------------
+----------------------
+| GREENFIELD EXAMPLE |
+----------------------
 
 Let's say you want to add a new feature that allows users to authenticate via
 Google OAuth. The workflow is as follows:
@@ -46,9 +46,9 @@ An example looks like:
                                     COMMANDS
 ================================================================================
 
---------------------------------------------------------------------------------
-SPECIFICATION WORKFLOW
---------------------------------------------------------------------------------
+--------------------------
+| SPECIFICATION WORKFLOW |
+--------------------------
 
   /spec:new <feature-name>
     Create a new feature specification with auto-incremented ID.
@@ -77,9 +77,9 @@ SPECIFICATION WORKFLOW
     Create approval marker for completed specification phase.
     Automatically suggests next phase in workflow.
 
---------------------------------------------------------------------------------
-IMPLEMENTATION WORKFLOW
---------------------------------------------------------------------------------
+---------------------------
+| IMPLEMENTATION WORKFLOW |
+---------------------------
 
   /spec:implement [phase-number|task]
     Start implementation from approved tasks.
@@ -109,9 +109,9 @@ IMPLEMENTATION WORKFLOW
     - Verifies builds and runs iterative fixes
     - Creates git commit with all changes
 
---------------------------------------------------------------------------------
-TASK MANAGEMENT
---------------------------------------------------------------------------------
+-------------------
+| TASK MANAGEMENT |
+-------------------
 
   /spec:update-task <task-filter>
     Mark tasks as complete based on recent commits.
@@ -125,18 +125,18 @@ TASK MANAGEMENT
     Switch active specification context.
     Resolves spec by ID or fuzzy name match.
 
---------------------------------------------------------------------------------
-COLLABORATION
---------------------------------------------------------------------------------
+-----------------
+| COLLABORATION |
+-----------------
 
   /spec:handoff
     Generate comprehensive handoff prompt for next agent.
     Documents progress, design decisions, known issues, and next steps.
     Useful when context window is nearing capacity.
 
---------------------------------------------------------------------------------
-DOCUMENTATION INDEXING
---------------------------------------------------------------------------------
+--------------------------
+| DOCUMENTATION INDEXING |
+--------------------------
 
   /nia:index [resource-urls]
     Index documentation and repositories for AI-assisted search.
@@ -145,16 +145,16 @@ DOCUMENTATION INDEXING
     - Checks status and renames completed indexes
     - Handles failed jobs with sitemap analysis
 
---------------------------------------------------------------------------------
-UTILITIES
---------------------------------------------------------------------------------
+-------------
+| UTILITIES |
+-------------
 
   /summarize
     Generate concise summary of current chat session.
     Includes TLDR, key decisions, action items, and code snippets.
 
 ================================================================================
-NOTES
+                                    NOTES
 ================================================================================
 
   - All specs are stored in .llms/spec/[ID]-[feature-name]/
