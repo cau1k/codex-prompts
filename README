@@ -94,14 +94,6 @@ An example looks like:
     - Implements focused, single-task work
     - Generates conventional commit message
 
-  /spec:implement-next-seq [task]
-    Sequential implementation with enhanced research phase.
-    - Phase 1: Prime context with doc queries and examples
-    - Phase 2: Create detailed technical implementation plan
-    - Phase 3: Execute implementation
-    - Phase 4: Update logs and provide commit message
-    Note: Pauses after research phase for user approval
-
   /spec:implement-cleanup [context]
     Run cleanup, linting, and build validation.
     - Executes environment sanity checks
