@@ -1,9 +1,16 @@
 ---
 allowed-tools: Bash(ls:*), Bash(cat:*), Bash(grep:*), Bash(test:*), Bash(find:*)
 description: Handoff implementation work to another agent.
+arguments: $ARGUMENTS
 ---
 
 ## Context
+
+<|start_user_provided_context|>
+
+$ARGUMENTS
+
+<|end_user_provided_contexts|>
 
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null || echo "None"`
 
