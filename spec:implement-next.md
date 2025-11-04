@@ -18,7 +18,7 @@ $$2 = CONTEXT = "$2"
 
 Current spec: !`cat .llms/spec/.current-spec 2>/dev/null`
 Tasks approved: !`test -f .llms/spec/$(cat .llms/spec/.current-spec)/.tasks-approved && echo "Yes" || echo "No"`
-List and then read all documents in the spec `ls -al .llms/spec/$(cat .llms/spec/.current-spec)`
+List and then read all documents in the spec **including** the implement-*.md documents `ls -al .llms/spec/$(cat .llms/spec/.current-spec)`
 
 ```bash
 for file in .llms/spec/$(cat .llms/spec/.current-spec)/*; do
